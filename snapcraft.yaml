@@ -1,0 +1,37 @@
+name: mypdfsigner
+base: core20
+version: '3.1.1'
+license: Proprietary
+summary: MyPDFSigner is a tool to sign PDF using PKCS\#11 and PKCS\#12 key stores.
+description: |
+  MyPDFSigner supports Time Stamping (RFC 3161), PAdES B-B, B-T and LTV
+  (ETSI TS 103 172), eIDAS (EU regulation 910/2014), Encryption, Bulk
+  Signing and Signature Verification . PDF documents signed by MyPDFSigner
+  are correctly displayed by Adobe Reader.
+
+grade: stable
+confinement: strict
+
+parts:
+  mypdfsigner-install:
+    source: https://www.kryptokoder.com/mypdfsigner_3.1.1-1_amd64.deb
+    plugin: dump
+    source-type: deb
+    stage-packages:
+      - libcurl4
+      - libexiv2-27
+      - libhpdf-2.3.0
+      - libjson-c4
+      - libpng16-16
+      - libqpdf26
+      - libzip5
+      - libssl1.1
+      - zlib1g
+    override-pull: |
+      snapcraftctl pull
+      ln -sf ../../../usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3.1.1 usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3
+      ln -sf ../../../usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3.1.1 usr/lib/x86_64-linux-gnu/libmypdfsigner.so
+
+apps:
+  mypdfsigner:
+    command: usr/local/bin/mypdfsigner
