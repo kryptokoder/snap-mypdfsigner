@@ -35,3 +35,6 @@ parts:
 apps:
   mypdfsigner:
     command: usr/local/bin/mypdfsigner
+
+architectures:
+  - build-on: amd64
