@@ -1,6 +1,6 @@
 name: mypdfsigner
 base: core20
-version: '3.1.1'
+version: '3.1.5'
 license: Proprietary
 summary: MyPDFSigner is a tool to sign PDF using PKCS\#11 and PKCS\#12 key stores.
 description: |
@@ -14,7 +14,7 @@ confinement: strict
 
 parts:
   mypdfsigner-install:
-    source: https://www.kryptokoder.com/mypdfsigner_3.1.1-1_amd64.deb
+    source: https://www.kryptokoder.com/mypdfsigner_3.1.5-1_amd64.deb
     plugin: dump
     source-type: deb
     stage-packages:
@@ -29,8 +29,8 @@ parts:
       - zlib1g
     override-pull: |
       snapcraftctl pull
-      ln -sf ../../../usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3.1.1 usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3
-      ln -sf ../../../usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3.1.1 usr/lib/x86_64-linux-gnu/libmypdfsigner.so
+      ln -sf ../../../usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3.1.5 usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3
+      ln -sf ../../../usr/lib/x86_64-linux-gnu/libmypdfsigner.so.3.1.5 usr/lib/x86_64-linux-gnu/libmypdfsigner.so
 
 apps:
   mypdfsigner:
